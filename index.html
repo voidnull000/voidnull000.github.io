@@ -1,7 +1,150 @@
+
+<!doctype html>
 <html>
-    <head style="background-color: cyan;">
-        <title>Adamc295's github.io</title>
-        <h1 style="font-family: Helvetica; font-size: 25;">Adamc295's github.io</h1>
-        <p style="font-family: Helvetica;">This page is kind of bland. Maybe YOU can help!</p>
-    </head>
+	<head>
+		<!-- 
+			Hey, don't you know that it's rude to look inside something?
+			Or someone?
+			
+			Nah, I'm just joking.
+			There's nothing here of importance, anyway.
+			(at least, not yet)
+			
+			- adamc295
+		-->
+		<title>heya.</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<style>
+			/* if you think this webpage was specifically designed for my screen,
+			 you'd be right.
+			 to be fair, i don't expect people to be using 800x600 screens nowadays.
+			 but who knows, y'know? */
+			@font-face {
+				font-family: "8bitoperator JVE";
+				src: url("8bitoperator_jve.tff") format("truetype");
+			}
+			body {
+				background-color: black;
+				text-align: center;
+				color: white;
+				font-family: 8bitoperator JVE, monospace;
+			}
+			div {
+				position: relative;
+			}
+			#container {
+				position: absolute;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-direction: column;
+				top: 37%;
+				overflow: visible;
+				width: 30%;
+				margin-left: 35%;
+			}
+			#title h1 {
+				display: inline;
+				font-size: 72px;
+			}
+			#credits {
+				margin-top: 75%;
+				font-size: 16px;
+				color: gray;
+			}
+		</style>
+		<script>
+			var msgs = [
+				"so uh, you doing anything right now?",
+				"there's plenty of other sites to go to, y'know.",
+				"there's nothing here, go home.",
+				"well, there's nothing here YET, so to say.",
+				"help! i'm trapped in a crappy script!",
+				"seriously, just go somewhere else, there's nothing for you.",
+				"y'know, i could put a paragraph in here, and nobody would care.",
+				"wow, you're STILL here?",
+				"this is just grating, at this point.",
+				"ugh, single page websites, am i right?",
+				"hope you got what you wanted, js coders.",
+				"these messages are hard to write.",
+				"y'know, this is actually slightly off-center, but i don't care.",
+				"if you see 'undefined' here, don't worry. or, do worry, i won't blame you."
+			]
+			var alreadyloaded = false;
+			var textcol = 0;
+			
+			// i'm 110% not copying this from reddit's 504 page which is on github.
+			// or was, i dunno.
+			
+			function randint(low, high) {
+				return Math.round(Math.random() * (high - low + 1)) + low;
+			}
+			function randmsg() {
+				return msgs[randint(0, msgs.length - 1)];
+			}
+			
+			function changemsg() {
+				var mg = document.getElementById("randotext");
+				mg.innerHTML = randmsg();
+			}
+			
+			// okay, i'm copying from reddit's 504 page, you got me.
+			
+			function nextcol() {
+				// this is a hack, plain and simple
+				// it's not good, but it looks nice, so
+				var l1 = document.getElementById("l1");
+				var l2 = document.getElementById("l2");
+				var l3 = document.getElementById("l3");
+				var l4 = document.getElementById("l4");
+				var l5 = document.getElementById("l5");
+				var l6 = document.getElementById("l6");
+				var l7 = document.getElementById("l7");
+				var l8 = document.getElementById("l8");
+				textcol = textcol + 0.1;
+				var s1 = "color: hsl(" + (textcol + 5) + ", 50%, 50%);";
+				var s2 = "color: hsl(" + (textcol + 10) + ", 50%, 50%);";
+				var s3 = "color: hsl(" + (textcol + 15) + ", 50%, 50%);";
+				var s4 = "color: hsl(" + (textcol + 20) + ", 50%, 50%);";
+				var s5 = "color: hsl(" + (textcol + 25) + ", 50%, 50%);";
+				var s6 = "color: hsl(" + (textcol + 30) + ", 50%, 50%);";
+				var s7 = "color: hsl(" + (textcol + 35) + ", 50%, 50%);";
+				var s8 = "color: hsl(" + (textcol + 40) + ", 50%, 50%);";
+				l1.style = s1;
+				l2.style = s2;
+				l3.style = s3;
+				l4.style = s4;
+				l5.style = s5;
+				l6.style = s6;
+				l7.style = s7;
+				l8.style = s8;
+			}
+			
+			function load() {
+				if(alreadyloaded) return;
+				alreadyloaded = true;
+				setInterval(function() {changemsg();}, 10 * 1000);
+				setInterval(function() {nextcol();}, 1);
+			}
+			
+			window.onload = load;
+		</script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="title">
+				<!-- split into seperate letters, because it's cool (with a k) -->
+				<h1 id="l1">a</h2>
+				<h1 id="l2">d</h2>
+				<h1 id="l3">a</h2>
+				<h1 id="l4">m</h2>
+				<h1 id="l5">c</h2>
+				<h1 id="l6">2</h2>
+				<h1 id="l7">9</h2>
+				<h1 id="l8">5</h2>
+			</div>
+			<h3 id="randotext">heya, enjoy the random messages that appear here.</h3>
+			<span id="credits">made by adamc295, font is 8bitoperator JVE</span>
+		</div>
+	</body>
 </html>
