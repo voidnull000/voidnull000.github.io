@@ -28,6 +28,9 @@
 			div {
 				position: relative;
 			}
+			#links {
+				text-align: right;
+			}
 			#container {
 				position: absolute;
 				display: flex;
@@ -40,11 +43,17 @@
 				margin-left: 35%;
 			}
 			#title h1 {
+				position: absolute;
 				display: inline;
 				font-size: 72px;
 			}
+			#randotext {
+				position: absolute;
+				transform: translate(0, 10em);
+			}
 			#credits {
-				margin-top: 75%;
+				position: absolute;
+				transform: translate(0, 33em);
 				font-size: 16px;
 				color: gray;
 			}
@@ -85,6 +94,8 @@
 			}
 			
 			// okay, i'm copying from reddit's 504 page, you got me.
+			// THIS stuff here, though, is all me.
+			// you can tell because it's made terribly.
 			
 			function nextcol() {
 				// this is a hack, plain and simple
@@ -98,14 +109,16 @@
 				var l7 = document.getElementById("l7");
 				var l8 = document.getElementById("l8");
 				textcol = textcol + 0.1;
-				var s1 = "color: hsl(" + (textcol + 5) + ", 50%, 50%);";
-				var s2 = "color: hsl(" + (textcol + 10) + ", 50%, 50%);";
-				var s3 = "color: hsl(" + (textcol + 15) + ", 50%, 50%);";
-				var s4 = "color: hsl(" + (textcol + 20) + ", 50%, 50%);";
-				var s5 = "color: hsl(" + (textcol + 25) + ", 50%, 50%);";
-				var s6 = "color: hsl(" + (textcol + 30) + ", 50%, 50%);";
-				var s7 = "color: hsl(" + (textcol + 35) + ", 50%, 50%);";
-				var s8 = "color: hsl(" + (textcol + 40) + ", 50%, 50%);";
+				// apologies in advance, for if your font is too big,
+				// or if you're going to throw up from this block of code.
+				var s1 = "color: hsl(" + (textcol + 5) + ", 50%, 50%); transform: translate(-140px, " + Math.sin(textcol + 5) * 5 + "px);"
+				var s2 = "color: hsl(" + (textcol + 10) + ", 50%, 50%); transform: translate(-105px, " + Math.sin(textcol + 10) * 5 + "px);";
+				var s3 = "color: hsl(" + (textcol + 15) + ", 50%, 50%); transform: translate(-70px, " + Math.sin(textcol + 15) * 5 + "px);";
+				var s4 = "color: hsl(" + (textcol + 20) + ", 50%, 50%); transform: translate(-35px, " + Math.sin(textcol + 20) * 5 + "px);";
+				var s5 = "color: hsl(" + (textcol + 25) + ", 50%, 50%); transform: translate(0px, " + Math.sin(textcol + 25) * 5 + "px);";
+				var s6 = "color: hsl(" + (textcol + 30) + ", 50%, 50%); transform: translate(35px, " + Math.sin(textcol + 30) * 5 + "px);";
+				var s7 = "color: hsl(" + (textcol + 35) + ", 50%, 50%); transform: translate(70px, " + Math.sin(textcol + 35) * 5 + "px);";
+				var s8 = "color: hsl(" + (textcol + 40) + ", 50%, 50%); transform: translate(105px, " + Math.sin(textcol + 40) * 5 + "px);";
 				l1.style = s1;
 				l2.style = s2;
 				l3.style = s3;
@@ -127,6 +140,10 @@
 		</script>
 	</head>
 	<body>
+		<div id="links">
+			<!-- <a href="#">Link test</a>
+			<a href="#">Test 2</a> -->
+		</div>
 		<div id="container">
 			<div id="title">
 				<!-- split into seperate letters, because it's cool (with a k) -->
@@ -139,7 +156,7 @@
 				<h1 id="l7">9</h2>
 				<h1 id="l8">5</h2>
 			</div>
-			<h3 id="randotext">heya, enjoy the random messages that appear here.</h3>
+			<h3 id="randotext"></h3>
 			<span id="credits">made by adamc295</span>
 		</div>
 	</body>
