@@ -119,6 +119,8 @@
 				var s6 = "color: hsl(" + (textcol + 30) + ", 50%, 50%); transform: translate(35px, " + Math.sin(textcol + 30) * 5 + "px);";
 				var s7 = "color: hsl(" + (textcol + 35) + ", 50%, 50%); transform: translate(70px, " + Math.sin(textcol + 35) * 5 + "px);";
 				var s8 = "color: hsl(" + (textcol + 40) + ", 50%, 50%); transform: translate(105px, " + Math.sin(textcol + 40) * 5 + "px);";
+				var bc = "background-color: hsl(" + (1 - textcol) + ", 50%, 10%);";
+				document.body.style = bc;
 				l1.style = s1;
 				l2.style = s2;
 				l3.style = s3;
