@@ -1,0 +1,115 @@
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<!-- 
+			Oh, now you've gone to typing in random names in the address, 
+			just so you can find secrets.
+			How unoriginal.
+			
+			...you're probably just looking at this in the repo, so, nevermind.
+		-->
+		<title>wasn't found.</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<style>
+			body {
+				background-color: black;
+				color: white;
+				font-family: monospace;
+				text-align: center;
+			}
+			
+			#container {
+				position: absolute;
+				top: 37%;
+				width: 30%;
+				margin-left: 35%;
+			}
+			h1 {
+				font-size: 72px;
+			}
+			#sleepz {
+				position: absolute;
+				top: 0px;
+				margin-left: 45%;
+				width: 30%;
+			}
+			#sleepz h1 {
+				position: absolute;
+			}
+		</style>
+		<script>
+			var zs = [];
+			
+			function makez() {
+				var elem = document.createElement("h2");
+				elem.className = "z";
+				if(Math.random() * 10 > 5) elem.textContent = "Z";
+				else elem.textContent = "z";
+				elem.style.position = "absolute";
+				
+				return elem;
+			}
+			
+			function spawnz() {
+				var sleepel = document.getElementById("sleepz");
+				if(Math.random() * 10 > 5) {
+					zy = {
+						ox: Math.random() * 100,
+						x: 0,
+						y: 500,
+						r: Math.random(),
+						el: makez()
+					}
+					sleepel.appendChild(zy.el);
+					zy.el.style.top = zy.y + "px";
+					zy.el.style.left = zy.x + "px";
+					zs.push(zy);
+				}
+			}
+			
+			function updatez() {
+				var sleepel = document.getElementById("sleepz");
+				var newzs = [];
+				
+				for(var i = 0; i < zs.length; i++) {
+					var z = zs[i];
+					z.y -= 1;
+					if(z.y < 0) {
+						sleepel.removeChild(z.el);
+					} else {
+						z.el.style.top = z.y + "px";
+						z.el.style.left = z.ox + (Math.sin(z.x + (z.y / 10) + z.r) * 15) + "px";
+						z.el.style.opacity = z.y / 10;
+						newzs.push(z);
+					}
+				}
+				
+				zs = newzs;
+			}
+			
+			function load() {
+				setInterval(function() {spawnz();}, 1500);
+				setInterval(function() {updatez();}, 1);
+			}
+		
+			window.onload = load;
+		</script>
+	</head>
+	<body>
+		<noscript>
+			<style>
+				#container {
+					display: none;
+				}
+			</style>
+			<h1>404: not found.</h1>
+			<h3>(we can't display something cool, because you turned off javascript.)</h3>
+		</noscript>
+		<div id="container">
+			<h1>404</h1>
+			<h3>(try to use a link, next time)</h3>
+		</div>
+		<div id="sleepz"></div>
+	</body>
+</html>
