@@ -9,7 +9,7 @@
 			...
 			...who even puts secrets on webpages?
 		-->
-		<title>heya.</title>
+		<title>voidnull</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<style>
 			/* if you think this webpage was specifically designed for my screen,
@@ -43,39 +43,54 @@
 			}
 			#title h1 {
 				position: absolute;
-				display: inline;
 				font-size: 72px;
 			}
 			#randotext {
 				position: absolute;
-				transform: translate(0, 10em);
+				transform: translate(0, 15em);
 			}
 			#credits {
 				position: absolute;
-				transform: translate(0, 33em);
-				font-size: 16px;
+				bottom: 0px;
+				font-size: 10px;
 				color: gray;
 			}
 		</style>
 		<script>
-			/*var msgs = [
+			// what even are size constraints
+			var msgs = [
 				"so uh, you doing anything right now?",
 				"there's plenty of other sites to go to, y'know.",
 				"there's nothing here, go home.",
 				"hey, why don't you use one of the links above?",
-				"help! i'm trapped in a crappy script!",
-				"c'mon, you've got plenty of other things to do, right?",
-				"y'know, i could put a paragraph in here, and nobody would care.",
-				"wow, you're STILL here?",
-				"you've gotta have SOMETHING else to do, right?",
-				"ugh, single file websites, am i right?",
-				"hope you got what you wanted, js coders.",
-				"thinking of something to put here is hard.",
-				"y'know, this is actually slightly off-center, but i don't care.",
-				"if you see 'undefined' here, don't worry. or, do worry, i won't blame you."
-			]*/
+				"help i'm trapped in a message factory",
+				"// TODO: put message here",
+				"yes i do use notepad++ what's the issue",
+				"snake remember to turn the console off every night before you go to bed",
+				"thinking about my cybergrind score (i think it's like 50 or something)",
+				"thinking about my ghosting hours (GHOST GANG!)",
+				"thinking about how many hours i've wasted in sandbox",
+				"thinking about my space programs (hasn't docked nor landed on the moon)",
+				"thinking about the £@!$% squad",
+				"thinking about null pointers (segfaults inbound)",
+				"did you know that cyberpunk as a genre is actually showing you things that happen (or could happen) in the current day and age and not a dystopian future",
+				"did you know that the british healthcare system (the nhs) has basically been privatised already by the government as now the nhs is just a commisioning group and not an actual public healthcare service meaning all the problems you see currently with the nhs is actually a problem of the corporations that make up the current british healthcare system and the government is using that as an excuse to fully privatise the healthcare system",
+				"did you know that in britian, trans people are basically fucked over by every single institution and rich guy oh wait you probably already did",
+				"yes i'm giving you a 12kb page to show terrible messages and crappy js code, what about it",
+				"insert joke about null pointers here",
+				"hey guys did you know that in terms of websites, not using a javascript framework (even something like jquery) is better for someone's internet browsing experience then packing 50MB of random shit you're probably not going to use in the slightest",
+				"i sure hope nobody looks in the gitignore",
+				"y'know what they say<br>i don't remember what they say",
+				"something tells me that i should not be packing this site with 50 morbillion different messages but who gives a shit",
+				"oh look it's the last message of the list how cool",
+			]
+			//var msgs = ["...you should click the bright red link..."]
 			var alreadyloaded = false;
 			var textcol = 0;
+			var textpos = 0;
+			var currentletter = 0;
+			var donethething = 0;
+			var rampup = 0;
 			
 			// i'm 110% not copying this from reddit's 504 page which is on github.
 			// or was, i dunno.
@@ -84,7 +99,7 @@
 				return Math.round(Math.random() * (high - low + 1)) + low;
 			}
 			function randmsg() {
-				return msgs[randint(0, msgs.length - 1)];
+				return msgs[randint(0, msgs.length - 2)];
 			}
 			
 			function changemsg() {
@@ -97,44 +112,108 @@
 			// you can tell because it's made terribly.
 			
 			function nextcol() {
+				var posconst = 7;
+				var tmpposc = 0; // i don't trust javascript enough
+				var tmpcol = 0;
+				
+				var textsat = 50;
+				
 				// this is a hack, plain and simple
 				// it's not good, but the end result looks nice, so
-				//var l1 = document.getElementById("l1");
-				//var l2 = document.getElementById("l2");
-				//var l3 = document.getElementById("l3");
-				//var l4 = document.getElementById("l4");
-				//var l5 = document.getElementById("l5");
-				//var l6 = document.getElementById("l6");
-				//var l7 = document.getElementById("l7");
-				//var l8 = document.getElementById("l8");
+				var l1 = document.getElementById("l1");
+				var l2 = document.getElementById("l2");
+				var l3 = document.getElementById("l3");
+				var l4 = document.getElementById("l4");
+				var l5 = document.getElementById("l5");
+				var l6 = document.getElementById("l6");
+				var l7 = document.getElementById("l7");
+				var l8 = document.getElementById("l8");
+				
 				textcol = textcol + 0.1;
+				textpos = textpos + 0.05;
+				
+				tmpposc = -posconst + rampup + 6;
+				tmpcol = tmpposc / 7;
+				
 				// apologies in advance if you've set your browser to scale up the webpage
 				// or if you're going to throw up from this block of code
-				//var s1 = "color: hsl(" + (textcol + 5) + ", 50%, 50%); transform: translate(-140px, " + Math.sin(textcol + 5) * 5 + "px);"
-				//var s2 = "color: hsl(" + (textcol + 10) + ", 50%, 50%); transform: translate(-105px, " + Math.sin(textcol + 10) * 5 + "px);";
-				//var s3 = "color: hsl(" + (textcol + 15) + ", 50%, 50%); transform: translate(-70px, " + Math.sin(textcol + 15) * 5 + "px);";
-				//var s4 = "color: hsl(" + (textcol + 20) + ", 50%, 50%); transform: translate(-35px, " + Math.sin(textcol + 20) * 5 + "px);";
-				//var s5 = "color: hsl(" + (textcol + 25) + ", 50%, 50%); transform: translate(0px, " + Math.sin(textcol + 25) * 5 + "px);";
-				//var s6 = "color: hsl(" + (textcol + 30) + ", 50%, 50%); transform: translate(35px, " + Math.sin(textcol + 30) * 5 + "px);";
-				//var s7 = "color: hsl(" + (textcol + 35) + ", 50%, 50%); transform: translate(70px, " + Math.sin(textcol + 35) * 5 + "px);";
-				//var s8 = "color: hsl(" + (textcol + 40) + ", 50%, 50%); transform: translate(105px, " + Math.sin(textcol + 40) * 5 + "px);";
-				var bc = "background-color: hsl(" + (1 - textcol) + ", 50%, 10%);";
+				var s1 = "color: hsl(" + (textcol + 5) + ", " + (textsat * tmpcol) + "%, " + (100 - (textsat * tmpcol) + 10) + "%); transform: translate(-140px, " + Math.sin(textpos + 5) * tmpposc + "px);"
+				var s2 = "color: hsl(" + (textcol + 10) + ", " + (textsat * tmpcol) + "%, " + (100 - (textsat * tmpcol) + 10) + "%); transform: translate(-105px, " + Math.sin(textpos + 10) * tmpposc + "px);";
+				var s3 = "color: hsl(" + (textcol + 15) + ", " + (textsat * tmpcol) + "%, " + (100 - (textsat * tmpcol) + 10) + "%); transform: translate(-70px, " + Math.sin(textpos + 15) * tmpposc + "px);";
+				var s4 = "color: hsl(" + (textcol + 20) + ", " + (textsat * tmpcol) + "%, " + (100 - (textsat * tmpcol) + 10) + "%); transform: translate(-35px, " + Math.sin(textpos + 20) * tmpposc + "px);";
+				var s5 = "color: hsl(" + (textcol + 25) + ", " + (textsat * tmpcol) + "%, " + (100 - (textsat * tmpcol) + 10) + "%); transform: translate(0px, " + Math.sin(textpos + 25) * tmpposc + "px);";
+				var s6 = "color: hsl(" + (textcol + 30) + ", " + (textsat * tmpcol) + "%, " + (100 - (textsat * tmpcol) + 10) + "%); transform: translate(35px, " + Math.sin(textpos + 30) * tmpposc + "px);";
+				var s7 = "color: hsl(" + (textcol + 35) + ", " + (textsat * tmpcol) + "%, " + (100 - (textsat * tmpcol) + 10) + "%); transform: translate(70px, " + Math.sin(textpos + 35) * tmpposc + "px);";
+				var s8 = "color: hsl(" + (textcol + 40) + ", " + (textsat * tmpcol) + "%, " + (100 - (textsat * tmpcol) + 10) + "%); transform: translate(105px, " + Math.sin(textpos + 40) * tmpposc + "px);";
+				
+				var bc = "background-color: hsl(" + (1 - textcol) + ", " + (50 * tmpcol) + "%, " + ((textsat * tmpcol) / 8) + "%);";
 				document.body.style = bc;
-				//l1.style = s1;
-				//l2.style = s2;
-				//l3.style = s3;
-				//l4.style = s4;
-				//l5.style = s5;
-				//l6.style = s6;
-				//l7.style = s7;
-				//l8.style = s8;
+				
+				l1.style = s1;
+				l2.style = s2;
+				l3.style = s3;
+				l4.style = s4;
+				l5.style = s5;
+				l6.style = s6;
+				l7.style = s7;
+				l8.style = s8;
+			}
+			
+			function dothecoolloadthing() {
+				if(currentletter > 8) return;
+				
+				var l1 = document.getElementById("l1");
+				var l2 = document.getElementById("l2");
+				var l3 = document.getElementById("l3");
+				var l4 = document.getElementById("l4");
+				var l5 = document.getElementById("l5");
+				var l6 = document.getElementById("l6");
+				var l7 = document.getElementById("l7");
+				var l8 = document.getElementById("l8");
+				
+				currentletter = currentletter + 1;
+				if(currentletter > 8) {
+					setInterval(function() {nextcol();}, 1);
+					setInterval(function() {ramp();}, 100);
+				}
+				
+				if(currentletter > 0) l1.style = "display: inline; transform: translate(-140px, 0px);";
+				else l1.style = "display: none;";
+				if(currentletter > 1) l2.style = "display: inline; transform: translate(-105px, 0px);";
+				else l2.style = "display: none;";
+				if(currentletter > 2) l3.style = "display: inline; transform: translate(-70px, 0px);";
+				else l3.style = "display: none;";
+				if(currentletter > 3) l4.style = "display: inline; transform: translate(-35px, 0px);";
+				else l4.style = "display: none;";
+				if(currentletter > 4) l5.style = "display: inline; transform: translate(0px, 0px);";
+				else l5.style = "display: none;";
+				if(currentletter > 5) l6.style = "display: inline; transform: translate(35px, 0px);";
+				else l6.style = "display: none;";
+				if(currentletter > 6) l7.style = "display: inline; transform: translate(70px, 0px);";
+				else l7.style = "display: none;";
+				if(currentletter > 7) l8.style = "display: inline; transform: translate(105px, 0px);";
+				else l8.style = "display: none;";
+			}
+			
+			function ramp() {
+				if(rampup < 10) rampup = rampup + 1;
 			}
 			
 			function load() {
 				if(alreadyloaded) return;
 				alreadyloaded = true;
-				//setInterval(function() {changemsg();}, 10 * 1000);
-				setInterval(function() {nextcol();}, 1);
+				
+				document.getElementById("l1").style = "display: none;";
+				document.getElementById("l2").style = "display: none;";
+				document.getElementById("l3").style = "display: none;";
+				document.getElementById("l4").style = "display: none;";
+				document.getElementById("l5").style = "display: none;";
+				document.getElementById("l6").style = "display: none;";
+				document.getElementById("l7").style = "display: none;";
+				document.getElementById("l8").style = "display: none;";
+				
+				setInterval(function() {dothecoolloadthing();}, 150);
+				setInterval(function() {changemsg();}, 10 * 1000);
 				
 				console.log("%cYou're not gonna find anything in the console, buddy.", "font-size: 24px;");
 			}
@@ -171,7 +250,7 @@
 				<br>
 				if you're using an older browser that doesn't support javascript...<br>
 				uh, why?<br>
-				if you have to, because your OS is old as all hell, then, sure, i get it.<br>
+				if you have to, because your OS is old as all hell then sure, i get it.<br>
 				if you don't, then i guess it's for nostalgia?<br>
 				but then, why are you going to a site like this?<br>
 				<br><br>
@@ -185,14 +264,21 @@
 			<!-- <a href="#">Link test</a>
 			<a href="#">Test 2</a> -->
 			<a href="/about">who actually are you?</a>
-			<a href="/404">i want to see your 404 page, please</a>
 			<a href="/ss14">how 2: ss14 guides for morons</a>
+			<!-- apologies to dark mode users -->
+			<!--a style="color: red;" href="/news">BREAKING NEWS</a-->
 		</div>
 		<div id="container">
-			<span>hey uh, i changed my name</span>
-			<span>i know you don't care but</span>
-			<span>i dunno i just wanted to i guess?</span>
-			<span>i can't exactly figure out what to do here so just pretend there's some cool stuff here</span>
+			<div id="title">
+				<h1 id="l1">v</h1>
+				<h1 id="l2">o</h1>
+				<h1 id="l3">i</h1>
+				<h1 id="l4">d</h1>
+				<h1 id="l5">n</h1>
+				<h1 id="l6">u</h1>
+				<h1 id="l7">l</h1>
+				<h1 id="l8">l</h1>
+			</div>
 			<h3 id="randotext"></h3>
 		</div>
 	</body>
