@@ -2,6 +2,7 @@
 <!doctype html>
 <html>
 	<head>
+		<title>Error</title>
 		<style>
 			body {
 				background-color: black;
@@ -11,6 +12,21 @@
 		</style>
 	</head>
 	<body>
-		
+		<p>
+			Halting due to SIGSEGV<br>
+			Page fault at IP=FFFFE051, ERR=04 (NULLPTR)<br>
+			AX=00000000 BX=00051B06 CX=0516EE87 DX=93FC5100<br>
+			SP=000FF067 PROG=C:/SYS/KRNL16.EXE<br>
+			CS: B=00F00000 L=01FFFFFF P=00FF0416<br>
+			DS: B=00F00000 L=01FFFFFF P=00FF0651<br>
+			ES: B=00F00000 L=01FFFFFF P=00FF0651<br>
+			SS: B=00800000 L=009FFFFF P=008EB628<br>
+			<br>
+			Traceback:<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;0xFFFFE042 - HandleMemory<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;0xFF00D39A - RespondToRequest<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;0xFFFFFFE7 - BootHandle<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;0xFF000001 - Startup<br>
+		</p>
 	</body>
 </html>
