@@ -56,31 +56,27 @@
 		<script>
 			// what even are size constraints
 			var msgs = [
-				"so uh, you doing anything right now?",
 				"there's plenty of other sites to go to, y'know.",
 				"there's nothing here, go home.",
 				"hey, why don't you use one of the links above?",
 				"help i'm trapped in a message factory",
 				"// TODO: put message here",
 				"yes i do use notepad++ what's the issue",
-				"snake remember to turn the console off every night before you go to bed",
-				"thinking about my cybergrind score (i think it's like 50 or something)",
+				"i suppose being out of ideas and making it known is also a funny thing to put here",
 				"thinking about my ghosting hours (GHOST GANG!)",
 				"thinking about how many hours i've wasted in sandbox",
 				"thinking about my space programs (hasn't docked nor landed on the moon)",
-				"thinking about the £@!$% squad",
 				"thinking about null pointers (segfaults inbound)",
-				"thinking about being a girl",
+				"thinking about being a girl", // sorry not sorry
 				"did you know that cyberpunk as a genre is actually showing you things that happen (or could happen) in the current day and age and not a dystopian future",
 				"did you know that the british healthcare system (the nhs) has basically been privatised already by the government as now the nhs is just a commisioning group and not an actual public healthcare service meaning all the problems you see currently with the nhs is actually a problem of the corporations that make up the current british healthcare system and the government is using that as an excuse to fully privatise the healthcare system",
 				"did you know that in britian, trans people are basically fucked over by every single institution and rich guy oh wait you probably already did",
 				"yes i'm giving you a 12kb page to show terrible messages and crappy js code, what about it",
-				"insert joke about null pointers here",
+				"insert joke about null poin-- <b>SIGSEGV</b>",
 				"hey guys did you know that in terms of websites, not using a javascript framework (even something like jquery) is better for someone's internet browsing experience then packing 50MB of random shit you're probably not going to use in the slightest",
-				"i sure hope nobody looks in the gitignore",
 				"y'know what they say<br>i don't remember what they say",
 				"something tells me that i should not be packing this site with 50 morbillion different messages but who gives a shit",
-				"<a href='/10/01/10/01'>Incoming data...</a>",
+				"<a href='/data/10/01/10/01'>Incoming data...</a>", // this didn't work for a while i'm sorry
 				"oh look it's the last message of the list how cool",
 			]
 			//var msgs = ["...you should click the bright red link..."]
@@ -91,7 +87,7 @@
 			var donethething = 0;
 			var rampup = 0;
 			
-			// i'm 110% not copying this from reddit's 504 page which is on github.
+			// i'm copying this from reddit's 504 page which is on github.
 			// or was, i dunno.
 			
 			function randint(low, high) {
@@ -106,9 +102,8 @@
 				mg.innerHTML = randmsg();
 			}
 			
-			// okay, i'm copying from reddit's 504 page, you got me.
-			// THIS stuff here, though, is all me.
-			// you can tell because it's made terribly.
+			// this stuff was made by me, though
+			// you can tell because it sucks ass
 			
 			function nextcol() {
 				var posconst = 7;
@@ -176,6 +171,8 @@
 					setInterval(function() {ramp();}, 100);
 				}
 				
+				// mmm i love ctrl+d 
+				// thank you npp for being a good text editor
 				if(currentletter > 0) l1.style = "display: inline; transform: translate(-140px, 0px);";
 				else l1.style = "display: none;";
 				if(currentletter > 1) l2.style = "display: inline; transform: translate(-105px, 0px);";
@@ -214,6 +211,7 @@
 				setInterval(function() {dothecoolloadthing();}, 150);
 				setInterval(function() {changemsg();}, 10 * 1000);
 				
+				// weird that the javascript console also supports css styling
 				console.log("%cYou're not gonna find anything in the console, buddy.", "font-size: 24px;");
 			}
 			
@@ -222,48 +220,25 @@
 	</head>
 	<body>
 		<noscript>
-			<!--
-				yeah, i know.
-				putting a noscript into a website which does literally nothing is
-				kinda weird.
-				
-				and for something like THIS site, which is just a cool animation,
-				it's even weirder.
-				
-				but, who knows?
-				maybe someone's still using WorldWideWeb in [CURRENT_YEAR], y'know?
-				or would that be 2553 or whatever.
-				
-				who knows what the future holds, anyway.
-			-->
 			<style>
 				#container {
 					display: none;
 				}
 			</style>
-			<h2>please enable javascript (if you want to, i'm not forcing you)</h2>
 			<p>
-				wow, it's <b>[CURRENT_YEAR]</b> and you have javascript disabled?<br>
-				i mean, yeah, privacy concerns, i get it.<br>
-				but, c'mon, there's some cool stuff you're <small style="font-size: 6px;">probably</small> missing out on.<br>
+				hi there, i'm null<br>
+				you don't have javascript enabled currently.<br>
+				that's <i>fine</i>, but it means some cool (without a k) stuff can't be shown to you.<br>
+				i mean, you're not missing out on anything.<br>
 				<br>
-				if you're using an older browser that doesn't support javascript...<br>
-				uh, why?<br>
-				if you have to, because your OS is old as all hell then sure, i get it.<br>
-				if you don't, then i guess it's for nostalgia?<br>
-				but then, why are you going to a site like this?<br>
-				<br><br>
-				yeah, i know it's weird to put a <i>noscript</i> tag on a website like this,<br>
-				but c'mon. you gotta see my cool (with a k) js skills (with a z), right?<br>
-				<br>
-				pff, no. leave it off, i don't care.<br>
+				probably.
 			</p>
 		</noscript>
 		<div id="links">
 			<!-- <a href="#">Link test</a>
 			<a href="#">Test 2</a> -->
 			<a href="/about">who actually are you?</a>
-			<a href="/ss14">how 2: ss14 guides for morons</a>
+			<a href="/howtodothat">how 2 do that</a>
 		</div>
 		<div id="container">
 			<div id="title">
@@ -278,6 +253,6 @@
 			</div>
 			<h3 id="randotext"></h3>
 		</div>
-		<!--span id="credits">10/10/10/10</span-->
+		<span id="credits"></span>
 	</body>
 </html>
