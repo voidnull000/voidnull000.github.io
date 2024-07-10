@@ -9,13 +9,21 @@
 			...
 			...who even puts secrets on webpages?
 		-->
-		<title>voidnull</title>
+		
+		<!-- 
+			shout outs to vasilis for making me want to work on this page again 
+			you nerd
+			use the mdn web docs if you wanna actually make your site look good
+		-->
+		<title>voidnull('s site)</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<style>
-			/* if you think this webpage was specifically designed for my screen,
-			 you'd be right.
-			 to be fair, i don't expect people to be using 800x600 screens nowadays.
-			 but who knows, y'know? */
+			/* 
+				if you think this webpage was specifically designed for my screen,
+				you'd be right.
+				to be fair, i don't expect people to be using 800x600 screens nowadays.
+				but who knows, y'know? 
+			*/
 			body {
 				background-color: black;
 				text-align: center;
@@ -56,27 +64,29 @@
 		<script>
 			// what even are size constraints
 			var msgs = [
-				"there's plenty of other sites to go to, y'know.",
-				"there's nothing here, go home.",
-				"hey, why don't you use one of the links above?",
+				"there's plenty of other sites to go to, y'know",
+				"there's nothing here, go home",
+				"hey why don't you use one of the links above",
 				"help i'm trapped in a message factory",
 				"// TODO: put message here",
 				"yes i do use notepad++ what's the issue",
 				"i suppose being out of ideas and making it known is also a funny thing to put here",
 				"thinking about my ghosting hours (GHOST GANG!)",
 				"thinking about how many hours i've wasted in sandbox",
-				"thinking about my space programs (hasn't docked nor landed on the moon)",
+				"thinking about my space programs (hasn't landed on the moon)", // ksp moment, cheated for my first docking (i don't even play ksp anymore)
 				"thinking about null pointers (segfaults inbound)",
 				"thinking about being a girl", // sorry not sorry
 				"did you know that cyberpunk as a genre is actually showing you things that happen (or could happen) in the current day and age and not a dystopian future",
-				"did you know that the british healthcare system (the nhs) has basically been privatised already by the government as now the nhs is just a commisioning group and not an actual public healthcare service meaning all the problems you see currently with the nhs is actually a problem of the corporations that make up the current british healthcare system and the government is using that as an excuse to fully privatise the healthcare system",
-				"did you know that in britian, trans people are basically fucked over by every single institution and rich guy oh wait you probably already did",
+				// there was a massively large wall of text here but it a) bloats filesizes b) was basically a conspiracy and i don't want that to my name honestly
+				"did you know that in britain, trans people are basically fucked over by every single institution and rich guy oh wait you probably already did",
 				"yes i'm giving you a 12kb page to show terrible messages and crappy js code, what about it",
 				"insert joke about null poin-- <b>SIGSEGV</b>",
 				"hey guys did you know that in terms of websites, not using a javascript framework (even something like jquery) is better for someone's internet browsing experience then packing 50MB of random shit you're probably not going to use in the slightest",
 				"y'know what they say<br>i don't remember what they say",
 				"something tells me that i should not be packing this site with 50 morbillion different messages but who gives a shit",
 				"<a href='/data/10/01/10/01'>Incoming data...</a>", // this didn't work for a while i'm sorry
+				"imagine if i actually had the willpower to do things that would be awesome wouldn't it",
+				"the wavy text above me took literal hours to make and i'm not proud of it anyway",
 				"oh look it's the last message of the list how cool",
 			]
 			//var msgs = ["...you should click the bright red link..."]
@@ -151,6 +161,9 @@
 				l6.style = s6;
 				l7.style = s7;
 				l8.style = s8;
+				
+				// apparently css styles can do something like this but better,
+				// i don't care enough, though
 			}
 			
 			function dothecoolloadthing() {
@@ -165,7 +178,7 @@
 				var l7 = document.getElementById("l7");
 				var l8 = document.getElementById("l8");
 				
-				currentletter = currentletter + 1;
+				currentletter = currentletter + 4;
 				if(currentletter > 8) {
 					setInterval(function() {nextcol();}, 1);
 					setInterval(function() {ramp();}, 100);
@@ -208,7 +221,7 @@
 				document.getElementById("l7").style = "display: none;";
 				document.getElementById("l8").style = "display: none;";
 				
-				setInterval(function() {dothecoolloadthing();}, 150);
+				setInterval(function() {dothecoolloadthing();}, 450);
 				setInterval(function() {changemsg();}, 10 * 1000);
 				
 				// weird that the javascript console also supports css styling
