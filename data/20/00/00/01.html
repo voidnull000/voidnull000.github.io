@@ -2,15 +2,260 @@
 <!doctype html>
 <html>
 	<head>
+		<title>Space test</title>
 		<style>
 			body {
 				background-color: black;
 				color: white;
 				font-family: monospace;
 			}
+			
+			#alert {
+				display: none;
+				color: red;
+			}
+			
+			@media (max-width: 900px) {
+				#alert {
+					display: block;
+				}
+			}
 		</style>
+		
+		<script>
+			// Physics parts are based on https://github.com/0x1ED1CE/FPS
+			// Copyright 2024 Dice (0x1ED1CE on github)
+			// See https://github.com/0x1ED1CE/FPS/blob/main/LICENSE for details
+			
+			// Math parts are based on https://github.com/ShoesForClues/lmath
+			// Copyright 2020 Shoelee (ShoesForCLues on github)
+			// See https://github.com/ShoesForClues/lmath/blob/master/LICENSE for details
+			
+			var canv; // Canvas, doesn't get used much
+			var glctx; // WebGL context, for rendering
+			var world; // Physics world
+			var testBody; // TESTING BODY
+			
+			// Basic math type for positions, rotations, whatever
+			class Vec3 {
+				constructor(x, y, z) {
+					this.x = x;
+					this.y = y;
+					this.z = z;
+				}
+				
+				// Set the Vec3 to x, y, z
+				set(x, y, z) {
+					this.x = x;
+					this.y = y;
+					this.z = z;
+				}
+				
+				// Add vector 2 to vector 1
+				static add(vec1, vec2) {
+					vec1.set(vec1.x + vec2.x, vec1.y + vec2.y, vec1.z + vec2.z);
+				}
+				
+				// Subtract vector 2 from vector 1
+				static subtract(vec1, vec2) {
+					vec1.set(vec1.x - vec2.x, vec1.y - vec2.y, vec1.z - vec2.z);
+				}
+			}
+			
+			// A 4x4 matrix, for transformation, etc.
+			class Mat4 {
+				// x1, x2, x3, x4
+				// y1, y2, y3, y4
+				// z1, z2, z3, z4
+				// w1, w2, w3, w4
+				
+				constructor(x1, x2, x3, x4, y1, y2, y3, y4, z1, z2, z3, z4, w1, w2, w3, w4) {
+					this.x1 = x1;
+					this.x2 = x2;
+					this.x3 = x3;
+					this.x4 = x4;
+					
+					this.y1 = y1;
+					this.y2 = y2;
+					this.y3 = y3;
+					this.y4 = y4;
+					
+					this.z1 = z1;
+					this.z2 = z2;
+					this.z3 = z3;
+					this.z4 = z4;
+					
+					this.w1 = w1;
+					this.w2 = w2;
+					this.w3 = w3;
+					this.w4 = w4;
+				}
+				
+				set(x1, x2, x3, x4, y1, y2, y3, y4, z1, z2, z3, z4, w1, w2, w3, w4) {
+					this.x1 = x1;
+					this.x2 = x2;
+					this.x3 = x3;
+					this.x4 = x4;
+					
+					this.y1 = y1;
+					this.y2 = y2;
+					this.y3 = y3;
+					this.y4 = y4;
+					
+					this.z1 = z1;
+					this.z2 = z2;
+					this.z3 = z3;
+					this.z4 = z4;
+					
+					this.w1 = w1;
+					this.w2 = w2;
+					this.w3 = w3;
+					this.w4 = w4;
+				}
+				
+				set_identity() {
+					this.set(1, 0, 0, 0,
+							 0, 1, 0, 0,
+							 0, 0, 1, 0,
+							 0, 0, 0, 1);
+				}
+			}
+			
+			// A physical body in the world
+			class Body {
+				constructor() {
+					this.world = null;
+					this.position = new Vec3(0, 0, 0);
+					this.velocity = new Vec3(0, 0, 0);
+				}
+				
+				step() {
+					Vec3.add(this.position, this.velocity);
+				}
+			}
+			
+			// The world in which everything happens
+			class World {
+				constructor() {
+					this.gravity = new Vec3(0, -1, 0);
+					this.bodies = [];
+				}
+				
+				addBody(body) {
+					this.bodies.push(body);
+					body.world = this;
+				}
+				
+				step() {
+					for(let i = 0; i < this.bodies.length; i++) {
+						Vec3.add(this.bodies[i].velocity, this.gravity);
+						this.bodies[i].step();
+						
+						// This is barely legible but it does the job
+						if(this.bodies[i].position.x < -10000) 
+							this.bodies[i].position.x = 10000;
+						if(this.bodies[i].position.y < -10000) 
+							this.bodies[i].position.y = 10000;
+						if(this.bodies[i].position.z < -10000) 
+							this.bodies[i].position.z = 10000;
+						if(this.bodies[i].position.x > 10000) 
+							this.bodies[i].position.x = -10000;
+						if(this.bodies[i].position.y > 10000) 
+							this.bodies[i].position.y = -10000;
+						if(this.bodies[i].position.z > 10000) 
+							this.bodies[i].position.z = -10000;
+						
+						if(this.bodies[i].velocity.x < -1000) 
+							this.bodies[i].velocity.x = -1000;
+						if(this.bodies[i].velocity.y < -1000) 
+							this.bodies[i].velocity.y = -1000;
+						if(this.bodies[i].velocity.z < -1000) 
+							this.bodies[i].velocity.z = -1000;
+						if(this.bodies[i].velocity.x > 1000) 
+							this.bodies[i].velocity.x = 1000;
+						if(this.bodies[i].velocity.y > 1000) 
+							this.bodies[i].velocity.y = 1000;
+						if(this.bodies[i].velocity.z > 1000) 
+							this.bodies[i].velocity.z = 1000;
+					}
+				}
+			}
+			
+			function update() {
+				world.step();
+				requestAnimationFrame(update);
+			}
+			
+			function draw() {
+				//glctx.clearColor(0, 0, 0.1, 1);
+				//glctx.clear(glctx.COLOR_BUFFER_BIT);
+				
+				ctx.fillStyle = "black";
+				ctx.fillRect(0, 0, 800, 600);
+				
+				ctx.fillStyle = "red";
+				ctx.fillText("Space Test 2D Prototype", 0, 8);
+				
+				ctx.fillStyle = "white";
+				ctx.fillRect(testBody.position.x * 0.1, -testBody.position.y * 0.1, 50, 50);
+				ctx.fillText(testBody.position.x, 0, 20);
+				ctx.fillText(testBody.position.y, 0, 28);
+				ctx.fillText(testBody.position.z, 0, 36);
+				ctx.fillText(testBody.velocity.x, 50, 20);
+				ctx.fillText(testBody.velocity.y, 50, 28);
+				ctx.fillText(testBody.velocity.z, 50, 36);
+				
+				requestAnimationFrame(draw);
+			}
+			
+			window.onload = function() {
+				canv = document.getElementById("mainCanvas");
+				//glctx = canv.getContext("webgl");
+				ctx = canv.getContext("2d"); // TESTING
+				world = new World();
+				
+				testMatrix = new Mat4(0, 0, 0, 0,
+									  0, 0, 0, 0,
+									  0, 0, 0, 0,
+									  0, 0, 0, 0);
+				
+				console.log(testMatrix.x1);
+				testMatrix.set_identity();
+				console.log(testMatrix.x1);
+				
+				
+				testBody = new Body();
+				testBody.position.set(150, 0, 0);
+				testBody.velocity.set(5, 50, 0);
+				world.addBody(testBody);
+				
+				window.requestAnimationFrame(update);
+				window.requestAnimationFrame(draw);
+			}
+		</script>
 	</head>
 	<body>
+		<h1>Space test</h1>
+		<h1 id="alert">You should not be using this on mobile.</h1>
+		<canvas id="mainCanvas" style="width: 800px; height: 600px">
+			come on, your browser has GOT to support canvas by now
+			(or you disabled javascript, in which case, why are you even browsing here)
+		</canvas>
+		<h3>Note: Highly unfinished, don't expect a single thing to come out of this.</h3>
 		
+		<!-- 
+			i don't exactly know how to make a physics engine, i just wanna do a cool space game
+			
+			and yeah i haven't even done the space stuff yet but whatever we'll break that bridge when we get there
+		-->
+		<p style="font-size: 11px; color: gray;">
+			Physics parts are based on <a href="https://github.com/0x1ED1CE/FPS">https://github.com/0x1ED1CE/FPS</a><br>
+			Copyright 2024 Dice (0x1ED1CE on github)<br>
+			See <a href="https://github.com/0x1ED1CE/FPS/blob/main/LICENSE">https://github.com/0x1ED1CE/FPS/blob/main/LICENSE</a> for details<br>
+			<br>
+			Math parts are based on <a href="https://github.com/ShoesForClues/lmath">https://github.com/ShoesForClues/lmath</a><br>
+			Copyright 2020 Shoelee (ShoesForCLues on github)<br>
+			See <a href="https://github.com/ShoesForClues/lmath/blob/master/LICENSE">https://github.com/ShoesForClues/lmath/blob/master/LICENSE</a> for details<br>
+		</p>
 	</body>
 </html>
