@@ -6,10 +6,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<style>
 			body {
-				background-color: black;
+				background: center / contain no-repeat linear-gradient(180deg, #000, #303);
 				color: white;
 				font-family: monospace;
 				text-align: center;
+				overflow: hidden;
 			}
 			
 			#container {
@@ -79,13 +80,13 @@
 				
 				for(var i = 0; i < zs.length; i++) {
 					var z = zs[i];
-					z.y -= 1;
+					z.y -= (0.5 * z.y) * 0.01;
 					if(z.y < 0) {
 						sleepel.removeChild(z.el);
 					} else {
 						z.el.style.top = z.y + "px";
 						z.el.style.left = z.ox + (Math.sin(z.x + (z.y / 10) + z.r) * 15) + "px";
-						z.el.style.opacity = z.y / 10;
+						z.el.style.opacity = z.y / 100;
 						newzs.push(z);
 					}
 				}
@@ -111,18 +112,21 @@
 					display: none;
 				}
 			</style>
-			<h1>404: not found.</h1>
+			<h1>404, not found</h1>
 			<h3>(you have javascript off so nothing fun can be shown)</h3>
-			<h4>(at least you care i guess)</h4>
+			<h4>(at least you care, i guess)</h4>
 		</noscript>
-		<div id="links">
-			<a href="/">take me home, please</a>
+		
+		<div style="height: 2560px;"> <!-- miserable hack, but mdn is completely fucking useless on this -->
+			<div id="links">
+				<a href="/">take me home, please</a>
+			</div>
+			<div id="container">
+				<h1>404</h1>
+				<p>(try to use one of the links next time)</p>
+			</div>
+			<div id="sleepz"></div>
+			<span style="color: #404040; position: absolute; font-size: 8px; bottom: 0px; left: 0px;">40/40/40/40</span>
 		</div>
-		<div id="container">
-			<h1>404</h1>
-			<h3>(try to use one of the links next time)</h3>
-		</div>
-		<div id="sleepz"></div>
-		<span style="color: #404040; position: absolute; font-size: 8px; bottom: 0px; left: 0px;">40/40/40/40</span>
 	</body>
 </html>

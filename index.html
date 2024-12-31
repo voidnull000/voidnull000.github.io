@@ -1,17 +1,17 @@
 
 <!doctype html>
 <html lang="en">
+	<!-- 
+		Hey, you know how rude it is to just look at the source of a page?
+		Seriously, doing this ruins all the fun of finding the secrets!
+		
+		...
+		...who even puts secrets on webpages?
+	-->
 	<head>
-		<!-- 
-			Hey, you know how rude it is to just look at the source of a page?
-			Seriously, doing this ruins all the fun of finding the secrets!
-			
-			...
-			...who even puts secrets on webpages?
-		-->
 		
 		<!-- 
-			shout outs to vasilis for making me want to work on this page again 
+			shout outs to myra for making me want to work on this page again 
 			you nerd
 			use the mdn web docs if you wanna actually make your site look good
 		-->
@@ -53,11 +53,12 @@
 				position: absolute;
 				transform: translate(0, 15em);
 			}
+			
 			#credits {
 				position: absolute;
 				left: 0px;
 				bottom: 0px;
-				font-size: 10px;
+				font-size: 8px;
 				color: gray;
 			}
 		</style>
@@ -87,6 +88,9 @@
 				"<a href='/data/10/01/10/01'>Incoming data...</a>", // this didn't work for a while i'm sorry
 				"imagine if i actually had the willpower to do things that would be awesome wouldn't it",
 				"the wavy text above me took literal hours to make and i'm not proud of it anyway",
+				"myra if you're reading this you're a nerd",
+				"hi, i'm voidnull, and i'm a text-a-holic", // i don't even think people will laugh at this joke
+				"the funny thing about random messages is that they're not actually funny the second time around",
 				"oh look it's the last message of the list how cool",
 			]
 			//var msgs = ["...you should click the bright red link..."]
@@ -149,6 +153,19 @@
 				var s6 = "color: hsl(" + (textcol + 30) + ", " + (textsat * tmpcol) + "%, " + (100 - (textsat * tmpcol) + 10) + "%); transform: translate(35px, " + Math.sin(textpos + 30) * tmpposc + "px);";
 				var s7 = "color: hsl(" + (textcol + 35) + ", " + (textsat * tmpcol) + "%, " + (100 - (textsat * tmpcol) + 10) + "%); transform: translate(70px, " + Math.sin(textpos + 35) * tmpposc + "px);";
 				var s8 = "color: hsl(" + (textcol + 40) + ", " + (textsat * tmpcol) + "%, " + (100 - (textsat * tmpcol) + 10) + "%); transform: translate(105px, " + Math.sin(textpos + 40) * tmpposc + "px);";
+				
+				/*
+				// alt colors
+				// i wonder if you could guess
+				var s1 = "color: rgb(0, 192, 255); transform: translate(-140px, " + Math.sin(textpos + 5) * tmpposc + "px);"
+				var s2 = "color: rgb(255, 128, 192); transform: translate(-105px, " + Math.sin(textpos + 10) * tmpposc + "px);";
+				var s3 = "color: rgb(255, 128, 192); transform: translate(-70px, " + Math.sin(textpos + 15) * tmpposc + "px);";
+				var s4 = "color: rgb(255, 255, 255); transform: translate(-35px, " + Math.sin(textpos + 20) * tmpposc + "px);";
+				var s5 = "color: rgb(255, 255, 255); transform: translate(0px, " + Math.sin(textpos + 25) * tmpposc + "px);";
+				var s6 = "color: rgb(255, 128, 192); transform: translate(35px, " + Math.sin(textpos + 30) * tmpposc + "px);";
+				var s7 = "color: rgb(255, 128, 192); transform: translate(70px, " + Math.sin(textpos + 35) * tmpposc + "px);";
+				var s8 = "color: rgb(0, 192, 255); transform: translate(105px, " + Math.sin(textpos + 40) * tmpposc + "px);";
+				*/
 				
 				var bc = "background-color: hsl(" + (1 - textcol) + ", " + (50 * tmpcol) + "%, " + ((textsat * tmpcol) / 8) + "%);";
 				document.body.style = bc;
@@ -266,6 +283,12 @@
 			</div>
 			<h3 id="randotext"></h3>
 		</div>
-		<span id="credits"></span>
+		<span id="credits">(most) content on this site is made by me (voidnull)
+		<br>please don't do any ai generation garbage with this</span>
 	</body>
+	
+	<!-- 
+		please github don't train your shitty ai models on my repos
+		not like they'd get any better anyway
+	-->
 </html>
