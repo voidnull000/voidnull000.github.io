@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>voidblog</title>
+		
+		<style>
+			body {
+				background-color: black;
+				color: white;
+				font-family: monospace;
+			}
+			
+			#title {
+				display: inline;
+			}
+			#comment {
+				font-style: italic;
+				color: #888;
+			}
+			
+			#header {
+				margin-bottom: 6em;
+			}
+			
+			#postcontainer {
+				padding: 1em;
+			}
+		</style>
+		
+		<script>
+			var titles = [
+				"voidblog",
+				"voidblag",
+				"voidbleg",
+				"voidblug",
+				"voidboog",
+				"voidpoop",
+				"badbloog",
+			]
+			var msgs = [
+				"because i felt weirdly left out",
+				"random thoughts you'd never care about",
+				"made entirely without the help of any framework that probably would help",
+			]
+			
+			function randint(low, high) {
+				return Math.round(Math.random() * (high - low + 1)) + low;
+			}
+			function randtitle() {
+				return titles[randint(0, titles.length - 2)];
+			}
+			function randcomment() {
+				return msgs[randint(0, msgs.length - 2)];
+			}
+			
+			function load() {
+				document.getElementById("title").innerHTML = randtitle();
+				document.getElementById("comment").innerHTML = randcomment();
+			}
+			
+			window.onload = load;
+			
+		</script>
+	</head>
+	<body>
+		<div id="header">
+			<h1 id="title">voidblog</h1>
+			<a href="/bleg">back</a>
+			<h3 id="comment">at least this one doesn't need javascript, right?</h3>
+		</div>
+		<div id="postcontainer">
+			<pre>
+				Hi.
+				
+				Considering how many *other people* that I know have blogs now, I've decided that I should also do one of those.
+				
+				Soo. What now?
+				
+				Well, I guess an actual introduction is needed. If you care.
+				I'm voidnull. People sometimes call me (in text) "void" but frankly, I prefer being called "null", since it just sounds better.
+				...
+				That's it, basically.
+				
+				Also, yes, this text isn't aligned.
+				Whoever made the pre element for HTML is an idiot.
+				
+				I'll probably just do this better soon since I can't be bothered right now.
+				Or ever.
+			</pre>
+		</div>
+	</body>
+</html>

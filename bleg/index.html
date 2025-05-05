@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>voidblog</title>
+		
+		<style>
+			body {
+				background-color: black;
+				color: white;
+				font-family: monospace;
+			}
+			
+			#title {
+				display: inline;
+			}
+			#comment {
+				font-style: italic;
+				color: #888;
+			}
+			
+			#header {
+				margin-bottom: 6em;
+			}
+			
+			#post {
+				border: solid #444 2px;
+				background-color: #222;
+				padding: 1em;
+				margin: 1em;
+			}
+			
+			#posttitle {
+				font-size: 2em;
+			}
+		</style>
+		
+		<script>
+			var titles = [
+				"voidblog",
+				"voidblag",
+				"voidbleg",
+				"voidblug",
+				"voidboog",
+				"voidpoop",
+				"badbloog",
+			]
+			var msgs = [
+				"because i felt weirdly left out",
+				"random thoughts you'd never care about",
+				"made entirely without the help of any framework that probably would help",
+			]
+			
+			function randint(low, high) {
+				return Math.round(Math.random() * (high - low + 1)) + low;
+			}
+			function randtitle() {
+				return titles[randint(0, titles.length - 2)];
+			}
+			function randcomment() {
+				return msgs[randint(0, msgs.length - 2)];
+			}
+			
+			function load() {
+				document.getElementById("title").innerHTML = randtitle();
+				document.getElementById("comment").innerHTML = randcomment();
+			}
+			
+			window.onload = load;
+			
+		</script>
+	</head>
+	<body>
+		<div id="header">
+			<h1 id="title">voidblog</h1>
+			<a href="/">back to home</a>
+			<h3 id="comment">at least this one doesn't need javascript, right?</h3>
+		</div>
+		<div id="postcontainer">
+			<!--
+			<div id="post">
+				<a id="posttitle" href="/bleg/post.html">Title of post</a>
+				<div id="postshortdesc">
+					This is a short description of a post. I don't have much to add.
+				</div>
+			</div>
+			-->
+			<div id="post">
+				<a id="posttitle" href="/bleg/thefirstone.html">The first one</a>
+				<div id="postshortdesc">
+					In which I suffer with HTML being terrible.
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
