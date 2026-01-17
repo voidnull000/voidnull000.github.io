@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Lone Probe</title>
+		<link href="style.css" rel="stylesheet" />
+		<script src="main.js"></script>
+	</head>
+	<body>
+		<div id="bigcontainer">
+			<div id="container">
+				<br>
+				
+				<div id="mission">Your mission is to explore the known universe.</div>
+				<div id="year_count">This mission has been ongoing for <span class="number">0</span> years.</div>
+				<div id="mission_control_trust">Mission Control has <span class='number'>20%</span> trust in you.</div>
+				<div id="fiftyone_status">Probe 51 is in contact with you. Perhaps not everything is lost.</div>
+				<br>
+				<div id="distance_count">You are currently <span class="number">0.0</span> million miles from Earth.</div>
+				<div id="scanned_count">You have scanned approximately <span class="number">0.0%</span> of the observable universe.</div>
+				
+				<br>
+				<div class="header" id="resources_header">RESOURCES</div>
+				<div id="power_count">You have <span class="number">0/50</span> joules available for usage.</div>
+				<div id="ore_count">You have collected <span class="number">0</span> useful amounts of ores.</div>
+				<div id="metal_count">You have <span class="number">0</span> useful amounts of lightweight metals.</div>
+				<div id="fuel_count">You have <span class="number">0</span> useful amounts of general fuels.</div>
+				
+				<br>
+				<div class="header" id="communications_header">COMMUNICATIONS</div>
+				<div id="comms_box">
+					<div id="comms_button_box">
+						<div class="comm_button" id="send">SEND</div>
+						<div class="comm_button" id="recieve">RECEIVE</div>
+						<div id="advpad">ADV</div>
+						<div class="comm_button" id="tune">TUNE</div>
+						<div class="comm_button" id="sos">SOS</div>
+					</div>
+					<!-- 
+						-R [CONTROL ACCESS GRANT SIGNAL]
+						-S [DATA.000]
+						-R [START SIGNAL]
+						-S I am ready.
+						-R Are you ready?
+						-S [TEST DATA]
+						-S I read you at a level of 4 (good).
+						-R How do you read me?
+					-->
+					<div id="text_log">
+						<p class="text_message" id="logmessage1">- RECIEVE: 23B, 0.4B/S, <span class="good">OP COMPLETE</span></p>
+						<p class="text_message" id="logmessage2">- SEND: 18B, 0.2B/S, <span class="good">OP COMPLETE</span></p>
+						<p class="text_message" id="logmessage3">- RECIEVE: 20B, 0.3B/S, <span class="good">OP COMPLETE</span></p>
+						<p class="text_message" id="logmessage4">- SEND: 6B, 0.1B/S, "QRV", <span class="good">OP COMPLETE</span></p>
+						<p class="text_message" id="logmessage5">- RECIEVE: 8B, 0.3B/S, "QRV?", <span class="good">OP COMPLETE</span></p>
+						<p class="text_message" id="logmessage6">- SEND: 16B, 0.2B/S, <span class="good">OP COMPLETE</span></p>
+						<p class="text_message" id="logmessage7">- SEND: 8B, 0.2B/S, "QRK4", <span class="good">OP COMPLETE</span></p>
+						<p class="text_message" id="logmessage8">- RECIEVE: 8B, 0.4B/S, "QRK?", <span class="good">OP COMPLETE</span></p>
+					</div>
+				</div>
+				
+				<br>
+				<div class="header" id="thoughts_header">STATUS</div>
+				<div id="thoughts">You feel like the game is starting.</div>
+				
+				<br>
+			</div>
+			
+			<div id="box_container">
+				<div id="diagnostics_box">
+					<div class="header" id="diagnostics_header">DIAGNOSTICS</div>
+					<div id="diagbox_csshell">
+					<!-- kids, please never use the <pre> element -->
+						<pre id="file_listing">
+ROOT/
+	- BOOT.BIN
+	- KRNL.EXE
+	DRV/
+		- ATNN.DRV
+		- K750.DRV
+		- PSRM.DRV
+	PRG/
+		- DIAG.EXE
+		- MAIN.EXE
+		- MIND.EXE
+		- PMAN.EXE
+	CFG/
+		- CONF.SYS
+		- CONF.KRN
+		- CONF.MND</pre>
+						<div id="diagbuttons">
+							<br>
+							<div class="diag_button">CALCULATE</div>
+							<div class="diag_button">STORE</div>
+							<div class="diag_button">DISCARD</div>
+						</div>
+					</div>
+					<div id="sentience">You have been calculated to be <span class="number">10%</span> sentient.</div>
+					<div id="drive_space">You have around <span class="number">16 MiB</span> left of your <span class="number">64 MiB</span> data storage.</div>
+				</div>
+				
+				<div id="manufacture_box">
+					<div class="header" id="manufacture_header">MAINTENANCE</div>
+					<div id="probeimg"></div>
+					<div id="antenna_health">Your antenna is at <span class="number">40%</span> integrity.</div>
+					<div id="hull_health">Your hull is at <span class="number">20%</span> integrity.</div>
+					<div id="computer_health">Your internal computer is at <span class="number">50%</span> integrity.</div>
+					<div style="padding-top: 2em;" id="repair_buttons">
+						REPAIR
+						<div class="manu_button" id="repair_antenna">ANTENNA</div>
+						<div class="manu_button" id="repair_hull">HULL</div>
+						<div class="manu_button" id="repair_computer">COMPUTER</div>
+					</div>
+					<div style="padding-top: 2em;" id="refine_buttons">
+						REFINE
+						<div class="manu_button" id="refine_ores">ORES</div>
+						<div class="manu_button" id="refine_fuels">FUELS</div>
+					</div>
+					<div style="padding-top: 2em;" id="craft_buttons">
+						BUILD
+						<div class="manu_button" id="craft_components">COMPONENTS</div>
+						<div class="manu_button" id="craft_parts">PARTS</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
