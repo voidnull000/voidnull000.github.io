@@ -1,0 +1,66 @@
+
+/*
+	Win9x-esque CSS stylesheet
+	
+	I learnt how to use CSS variables, by the way.
+	I don't know why, there's no real point to it..
+*/
+
+:root {
+	--nullcss-widget-backcolour: #323;
+	--nullcss-widget-bordercolour-dark: #212;
+	--nullcss-widget-bordercolour-light: #434;
+	--nullcss-title-firstcolour: #848;
+	--nullcss-title-secondcolour: #101;
+	--nullcss-textcolour: #fff;
+}
+
+.nullcss-button {
+	background-color: var(--nullcss-widget-backcolour);
+	border: 2px solid var(--nullcss-widget-bordercolour-dark);
+	border-top-color: var(--nullcss-widget-bordercolour-light);
+	border-left-color: var(--nullcss-widget-bordercolour-light);
+}
+
+.nullcss-closebutton {
+	background-color: var(--nullcss-widget-backcolour);
+	border: 2px solid var(--nullcss-widget-bordercolour-dark);
+	border-top-color: var(--nullcss-widget-bordercolour-light);
+	border-left-color: var(--nullcss-widget-bordercolour-light);
+	min-width: 1em;
+	max-width: 1em;
+	min-height: 1em;
+	max-height: 1em;
+	
+	position: relative;
+	left: 0.3em;
+	bottom: 0.3em;
+}
+
+.nullcss-titlebar {
+	min-width: 2em;
+	max-width: 2em;
+	background: linear-gradient(0deg, var(--nullcss-title-firstcolour), var(--nullcss-title-secondcolour));
+	border-right: 2px solid #202;
+	writing-mode: vertical-lr;
+	display: flex;
+}
+
+.nullcss-titletext {
+	padding: 4px;
+}
+
+.nullcss-titlebar-spacing {
+	flex-grow: 1;
+}
+
+.nullcss-window {
+	box-shadow: 
+		inset -1px -1px var(--nullcss-widget-bordercolour-dark), 
+		inset 1px 1px var(--nullcss-widget-bordercolour-light),
+		inset -2px -2px var(--nullcss-widget-bordercolour-dark), 
+		inset 2px 2px var(--nullcss-widget-bordercolour-light);
+	background-color: var(--nullcss-widget-backcolour);
+	padding: 2px;
+	display: flex;
+}
