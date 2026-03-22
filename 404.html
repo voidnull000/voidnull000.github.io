@@ -15,12 +15,13 @@
 			
 			#container {
 				position: absolute;
-				top: 37%;
-				width: 30%;
-				margin-left: 35%;
+				top: 37vh;
+				width: 50vh;
+				margin-left: 50vh;
+				height: 25vh;
 			}
 			h1 {
-				font-size: 72px;
+				font-size: 6vh;
 			}
 			#sleepz {
 				position: absolute;
@@ -34,7 +35,13 @@
 			#links {
 				text-align: right;
 			}
+			a {
+				/* pain */
+				color: #fff;
+				text-decoration: none;
+			}
 		</style>
+		<link href="assets/nullui.css" rel="stylesheet"></link>
 		<script>
 			var zs = [];
 			
@@ -81,10 +88,10 @@
 				for(var i = 0; i < zs.length; i++) {
 					var z = zs[i];
 					z.y -= (0.5 * z.y) * 0.01;
-					if(z.y < 0) {
+					if(z.y < 0.5) {
 						sleepel.removeChild(z.el);
 					} else {
-						z.el.style.top = z.y + "px";
+						z.el.style.top = z.y + "vh";
 						z.el.style.left = z.ox + (Math.sin(z.x + (z.y / 10) + z.r) * 15) + "px";
 						z.el.style.opacity = z.y / 100;
 						newzs.push(z);
@@ -103,31 +110,22 @@
 		</script>
 	</head>
 	<body>
-		<noscript>
-			<style>
-				#container {
-					display: none;
-				}
-				#sleepz {
-					display: none;
-				}
-			</style>
-			<h1>404, not found</h1>
-			<h3>(you have javascript off so nothing fun can be shown)</h3>
-			<h4>(at least you care, i guess)</h4>
-		</noscript>
-		
-		<div style="height: 2560px;"> <!-- miserable hack, but mdn is completely fucking useless on this -->
-			<div id="links">
-				<a href="/">take me home, please</a>
-			</div>
-			<div id="container">
-				<h1>404</h1>
-				<p>(try to use one of the links next time)</p>
+		<div style="height: 256vh;"> <!-- miserable hack, but mdn is completely fucking useless on this -->
+			<div id="container" style="z-index: 10000" class="nullcss-window">
+				<div class="nullcss-titlebar" style="margin-right: 0.5em">
+					<span class="nullcss-titletext">page not found</span>
+					<div class="nullcss-titlebar-spacing"></div>
+					<div class="nullcss-closebutton">X</div>
+				</div>
+				
+				<h1 style="margin: 1vh">404</h1>
+				<div style="align-content: center; margin: 1vh">
+					<p>(try to use one of the links next time)</p>
+					<br>
+					<a style="position: relative; padding: 1vh" href="/" class="nullcss-button" >take me home, please</a>
+				</div>
 			</div>
 			<div id="sleepz"></div>
-			<span style="color: #606060; position: absolute; font-size: 8px; bottom: 0px; left: 0px;">
-			do you know how long i spent trying to make this actually look good? because it was incredibly long and boring and filled with suffering.</span>
 		</div>
 	</body>
 </html>
