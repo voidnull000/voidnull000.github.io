@@ -8,10 +8,11 @@
 
 :root {
 	--nullcss-widget-backcolour: #323;
+	--nullcss-widget-backcolour-hover: #434;
 	--nullcss-widget-bordercolour-dark: #212;
 	--nullcss-widget-bordercolour-light: #434;
-	--nullcss-title-firstcolour: #848;
-	--nullcss-title-secondcolour: #101;
+	--nullcss-title-firstcolour: #2CC;
+	--nullcss-title-secondcolour: #404;
 	--nullcss-textcolour: #fff;
 }
 
@@ -20,6 +21,17 @@
 	border: 2px solid var(--nullcss-widget-bordercolour-dark);
 	border-top-color: var(--nullcss-widget-bordercolour-light);
 	border-left-color: var(--nullcss-widget-bordercolour-light);
+}
+
+.nullcss-button:hover {
+	background-color: var(--nullcss-widget-backcolour-hover);
+}
+
+.nullcss-button:active {
+	background-color: var(--nullcss-widget-backcolour);
+	border: 2px solid var(--nullcss-widget-bordercolour-light);
+	border-top-color: var(--nullcss-widget-bordercolour-dark);
+	border-left-color: var(--nullcss-widget-bordercolour-dark);
 }
 
 .nullcss-closebutton {
@@ -35,6 +47,13 @@
 	position: relative;
 	left: 0.3em;
 	bottom: 0.3em;
+}
+
+.nullcss-closebutton:active {
+	background-color: var(--nullcss-widget-backcolour);
+	border: 2px solid var(--nullcss-widget-bordercolour-light);
+	border-top-color: var(--nullcss-widget-bordercolour-dark);
+	border-left-color: var(--nullcss-widget-bordercolour-dark);
 }
 
 .nullcss-titlebar {
