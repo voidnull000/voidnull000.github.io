@@ -18,7 +18,7 @@
 				position: absolute;
 				display: flex;
 				top: 37vh;
-				width: 50vh;
+				width: 40vw; /* i was using viewport height for this. i am actually that stupid. */
 				height: 25vh;
 			}
 			h1 {
@@ -27,8 +27,9 @@
 			#sleepz {
 				position: absolute;
 				top: 0px;
-				margin-left: 45%;
-				width: 30%;
+				justify-content: center;
+				align-items: center;
+				width: 30vw;
 			}
 			#sleepz h1 {
 				position: absolute;
@@ -52,14 +53,10 @@
 		<script>
 			var zs = [];
 			
-			// this took way too long to do, but the result is something that looks sort of okay.
-			// if you're wondering why i don't use jquery or any external libraries for this,
-			//
-			// it's because you're a weakling for even wanting to use them, nerd.
-			// seriously, you can do pretty much everything jquery or whatever does in vanilla script,
-			// and it'll load a hell of a lot faster.
-			//
-			// search up "the best fucking website ever made" for more information.
+			// this code is genuinely the worst piece of shit i've ever seen
+			// and *I* wrote the fucking thing
+			// i have words to my past self on why the fuck they made this flaming pile of dogshit
+			// because holy shit, i don't think i've seen worse javascript, and that's saying something
 			
 			function makez() {
 				var elem = document.createElement("h2");
