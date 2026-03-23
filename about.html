@@ -2,36 +2,69 @@
 <!doctype html>
 <html>
 	<head>
-		<title>about some dumbass you don't care about</title>
+		<title>about that one idiot</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<style>
 			body {
 				background-color: black;
 				color: white;
 				font-family: monospace;
-				margin: 3em;
-				font-size: 2em;
+				margin: 2vh;
+				font-size: 1.5vh;
 			}
+			
+			#containerwindow {
+				max-width: 75vw;
+				min-height: 25vh;
+				justify-content: center;
+				align-items: center;
+				margin-top: 15vh;
+			}
+			
+			#container {
+				display: flex;
+				flex-direction: column;
+			}
+			
+			#containedcontainer {
+				display: grid;
+				justify-content: center;
+				justify-items: center;
+				align-items: center;
+				align-content: center;
+			}
+			
 		</style>
+		<link href="assets/nullui.css" rel="stylesheet"></link>
 	</head>
 	<body>
-		<!-- i need to update this but i can't be bothered -->
-		<img src="selfie.gif" alt="A poorly-drawn AI core. I should probably update that sprite." title="It seems to be on stand-by mode. You can still feel the heat it's making, though.">
-		<br><br>
+		<div id="containedcontainer">
+			<!-- i need to update this but i can't be bothered -->
+			<img src="selfie.gif" alt="A poorly-drawn AI core. I should probably update that sprite." title="It seems to be on stand-by mode. You can still feel the heat it's making, though.">
 		
-		<p>hey, i'm a loser you probably don't care about.</p>
-		<p>and you probably never will.</p>
-		<br>
-		<p>i am:</p>
-		<ul>
-			<li>not a web designer (as you clearly can see)</li>
-			<li>not a coder</li>
-			<li>barely an artist</li>
-			<li>absolutely never going to be famous</li>
-		</ul>
-		<br>
-		<p>oh, and i also make (terrible) jokes.</p>
-		<br><br><br>
-		<a href="/">okay.</a>
+			<div id="containerwindow" class="nullcss-window">
+				<div class="nullcss-titlebar" style="margin-right: 2vw; min-height: 25vh">
+					<span class="nullcss-titletext">about me</span>
+					<div class="nullcss-titlebar-spacing"></div>
+					<div class="nullcss-closebutton"></div>
+				</div>
+				<div id="container">
+					<p>
+						hi there.<br>
+						i'm a loser you've never heard of.<br>
+						among other things that i'm not skilled in:
+					</p>
+					<ul>
+						<li>i can barely draw things</li>
+						<li>i can bang code together until it makes something that looks neat</li>
+						<li>and i guess i try to write things too sometimes</li>
+					</ul>
+					<p>
+						i also make bad jokes, i guess.
+					</p>
+				</div>
+				<a class="nullcss-button" style="padding: 1vh; text-decoration: none; color: #fff; margin: 2vw;" href="/">okay.</a>
+			</div>
+		</div>
 	</body>
 </html>

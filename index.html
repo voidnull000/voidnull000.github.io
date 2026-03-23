@@ -23,18 +23,19 @@
 				background-color: black;
 				text-align: center;
 				color: white;
+				font-size: 1.5vh;
 				font-family: monospace;
-				margin: 3em;
+				margin: 2vh;
 			}
 			div {
 				position: relative;
 			}
 			#links {
-				padding: 0.4em;
+				padding: 0.6vh;
 			}
 			#linky {
-				padding: 0.5em;
-				margin-right: 0.4em;
+				padding: 0.8vh;
+				margin-right: 0.5vw;
 				color: #fff;
 				text-decoration: none;
 			}
@@ -48,12 +49,12 @@
 			}
 			#title h1 {
 				position: absolute;
-				font-size: 5em;
+				font-size: 8vh;
 				top: -10vh;
 			}
 			#randotext {
 				position: absolute;
-				transform: translate(0, 15em);
+				transform: translate(0, 15vh);
 			}
 		</style>
 		<link href="assets/nullui.css" rel="stylesheet"></link>
@@ -117,19 +118,22 @@
 				textcol = textcol + 0.1;
 				textpos = textpos + 0.05;
 				
-				tmpposc = -posconst + rampup + 6;
+				tmpposc = (-posconst + rampup + 6);
+				tmpposd = tmpposc / 50;
 				tmpcol = tmpposc / 7;
 				
-				// apologies in advance if you've set your browser to scale up the webpage
-				// or if you're going to throw up from this block of code
-				var s1 = "color: hsl(" + (textcol + 5) + ", " + (textsat * tmpcol) + "%, " + (100 - (textsat * tmpcol) + 10) + "%); transform: translate(-2.20em, " + Math.sin(textpos + 5) * tmpposc + "px);" // -140px
-				var s2 = "color: hsl(" + (textcol + 10) + ", " + (textsat * tmpcol) + "%, " + (100 - (textsat * tmpcol) + 10) + "%); transform: translate(-1.65em, " + Math.sin(textpos + 10) * tmpposc + "px);"; // -105px
-				var s3 = "color: hsl(" + (textcol + 15) + ", " + (textsat * tmpcol) + "%, " + (100 - (textsat * tmpcol) + 10) + "%); transform: translate(-1.10em, " + Math.sin(textpos + 15) * tmpposc + "px);"; // -70px
-				var s4 = "color: hsl(" + (textcol + 20) + ", " + (textsat * tmpcol) + "%, " + (100 - (textsat * tmpcol) + 10) + "%); transform: translate(-0.55em, " + Math.sin(textpos + 20) * tmpposc + "px);"; //-35px
-				var s5 = "color: hsl(" + (textcol + 25) + ", " + (textsat * tmpcol) + "%, " + (100 - (textsat * tmpcol) + 10) + "%); transform: translate(0em, " + Math.sin(textpos + 25) * tmpposc + "px);";
-				var s6 = "color: hsl(" + (textcol + 30) + ", " + (textsat * tmpcol) + "%, " + (100 - (textsat * tmpcol) + 10) + "%); transform: translate(0.55em, " + Math.sin(textpos + 30) * tmpposc + "px);";
-				var s7 = "color: hsl(" + (textcol + 35) + ", " + (textsat * tmpcol) + "%, " + (100 - (textsat * tmpcol) + 10) + "%); transform: translate(1.10em, " + Math.sin(textpos + 35) * tmpposc + "px);";
-				var s8 = "color: hsl(" + (textcol + 40) + ", " + (textsat * tmpcol) + "%, " + (100 - (textsat * tmpcol) + 10) + "%); transform: translate(1.65em, " + Math.sin(textpos + 40) * tmpposc + "px);";
+				var textsaturation = textsat * tmpcol;
+				var textvalue = 100 - (textsat * tmpcol) + 10;
+				
+				// this block is probably going to make you throw up
+				var s1 = "color: hsl(" + (textcol + 05) + ", " + textsaturation + "%, " + textvalue + "%); transform: translate(-2.20em, " + Math.sin(textpos + 05) * tmpposd + "em);" // -140px
+				var s2 = "color: hsl(" + (textcol + 10) + ", " + textsaturation + "%, " + textvalue + "%); transform: translate(-1.65em, " + Math.sin(textpos + 10) * tmpposd + "em);"; // -105px
+				var s3 = "color: hsl(" + (textcol + 15) + ", " + textsaturation + "%, " + textvalue + "%); transform: translate(-1.10em, " + Math.sin(textpos + 15) * tmpposd + "em);"; // -70px
+				var s4 = "color: hsl(" + (textcol + 20) + ", " + textsaturation + "%, " + textvalue + "%); transform: translate(-0.55em, " + Math.sin(textpos + 20) * tmpposd + "em);"; //-35px
+				var s5 = "color: hsl(" + (textcol + 25) + ", " + textsaturation + "%, " + textvalue + "%); transform: translate(0.00em, " + Math.sin(textpos + 25) * tmpposd + "em);";
+				var s6 = "color: hsl(" + (textcol + 30) + ", " + textsaturation + "%, " + textvalue + "%); transform: translate(0.55em, " + Math.sin(textpos + 30) * tmpposd + "em);";
+				var s7 = "color: hsl(" + (textcol + 35) + ", " + textsaturation + "%, " + textvalue + "%); transform: translate(1.10em, " + Math.sin(textpos + 35) * tmpposd + "em);";
+				var s8 = "color: hsl(" + (textcol + 40) + ", " + textsaturation + "%, " + textvalue + "%); transform: translate(1.65em, " + Math.sin(textpos + 40) * tmpposd + "em);";
 				
 				var bc = "background-color: hsl(" + (1 - textcol) + ", " + (50 * tmpcol) + "%, " + ((textsat * tmpcol) / 8) + "%);";
 				document.body.style = bc;
